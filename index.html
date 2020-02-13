@@ -1,0 +1,1600 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Fort Wayne Risk Road</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+
+	
+</head>
+<body>
+
+
+
+<div id="mapid" style="width: 1200px; height: 800px;"></div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+
+	//$('#mapid').height(window.innerHeight);
+
+	var map = L.map('mapid', {
+		zoomControl: false
+	})
+	.setView([41.07805715283417, -85.1327133178711],10);
+
+
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' 
+	}).addTo(map);
+
+
+	var blackpin = L.icon({
+    iconUrl: 'blackpin.svg',
+
+    iconSize:     [38, 95], // size of the icon
+    iconAnchor:   [19, 95], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-5, -50] // point from which the popup should open relative to the iconAnchor
+});
+	var popup = L.popup();
+
+	// L.marker([41.07805715283417, -85.1327133178711], {icon:blackpin}).addTo(map).bindPopup('Fort Wayne')
+
+	//Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+	// L.circle([51.508, -0.11], 500, {
+	// 	color: 'red',
+	// 	fillColor: '#f03',
+	// 	fillOpacity: 0.5
+	// }).addTo(mymap).bindPopup("I am a circle.");
+
+	// L.polygon([
+	// 	[51.509, -0.08],
+	// 	[51.503, -0.06],
+	// 	[51.51, -0.047]
+	// ]).addTo(mymap).bindPopup("I am a polygon.");
+
+
+	// var popup = L.popup();
+	var centroids = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1327133178711,
+          41.07805715283417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02D",
+        "streetname": "BARR ST",
+        "zipcode": 46802,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2489.86030400886,
+        "street_consequence": 0.5494735568
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13687499043633,
+          41.08086752560849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02D",
+        "streetname": "BARR ST",
+        "zipcode": 46802,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2489.86030400886,
+        "street_consequence": 0.5494735568
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13596200137624,
+          41.077524835007154
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "CASS ST",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1677.8382757138,
+        "street_consequence": 0.5063286801
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14498106408352,
+          41.095191924288784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "CASS ST",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1677.8382757138,
+        "street_consequence": 0.5063286801
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14446039641227,
+          41.09037001478884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2196.80718549668,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14579847742411,
+          41.09616824637775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2196.80718549668,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15225940423969,
+          41.09073011370131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2196.80718549668,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14980661243747,
+          41.09305550355108
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2012.41593374411,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14703857060859,
+          41.095618886722285
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2012.41593374411,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14507757492417,
+          41.08935295183002
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2012.41593374411,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14785372015604,
+          41.089414977212556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2012.41593374411,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15275594680834,
+          41.0895004160574
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2012.41593374411,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14634142297922,
+          41.089699109021495
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2012.41593374411,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15372206127088,
+          41.09072617902688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2012.41593374411,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1532289436955,
+          41.0897092469519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1878.74440181712,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14861804582888,
+          41.08660393256649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1878.74440181712,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1450452243098,
+          41.087204534146295
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1878.74440181712,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15292043949759,
+          41.08838010091792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1878.74440181712,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14634843028291,
+          41.087928705431175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1878.74440181712,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1533220793624,
+          41.084370451421904
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1878.74440181712,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1533559781787,
+          41.0855209450095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "KELLY DR",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 464.894500945582,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14938738548713,
+          41.08964261322927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "SHORT ST",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2578.31092607662,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14842726048043,
+          41.09255924792586
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ANDREW ST",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2582.79802176115,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15239662234828,
+          41.09249761323938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "ARCHER AVE",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2227.43260946814,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14981372383083,
+          41.09253623704427
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "GELLER ST",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 463.996807347497,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15016956367413,
+          41.08962810446512
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "PUTNAM ST",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2762.13101628484,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14883847736682,
+          41.09158096118664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "SHERMAN BLVD",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2616.25683104745,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15366349845263,
+          41.092513636337905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "BARTHOLD ST",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 464.366482418316,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15131545687767,
+          41.08960889148147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "CORTLAND AVE",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1962.05359400997,
+        "street_consequence": 0.5063286801
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1473407097455,
+          41.09351214410169
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "FLORENCE AVE",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2095.07997546341,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15006907302546,
+          41.09507033334064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ANDREW ST",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 434.4945754541,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15222754523225,
+          41.088316760560026
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 184.63131731829,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14507285771889,
+          41.08885583601721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 184.63131731829,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15287353341552,
+          41.08893030056803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 184.63131731829,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14785455006235,
+          41.08902695889835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ALLEY ALY",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 184.63131731829,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14632688558942,
+          41.08904464299955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI02A",
+        "streetname": "ANDREW ST",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 15.9516682195937,
+        "street_consequence": 0.5296986567
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.15225532109191,
+          41.08893374081397
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "GREENLAWN AVE",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2175.88439423454,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14991350435456,
+          41.093547421886456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "W STATE BLVD",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2755.14092356843,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1498622776806,
+          41.096117795542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VH35C",
+        "streetname": "W STATE BLVD",
+        "zipcode": 46808,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2755.14092356843,
+        "street_consequence": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14894951377508,
+          41.09609357635675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14A",
+        "streetname": "BEAVER AVE",
+        "zipcode": 46807,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2382.97792073929,
+        "street_consequence": 0.5286820767
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.152064279555,
+          41.05652004910873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14A",
+        "streetname": "NUTTMAN AVE",
+        "zipcode": 46807,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1989.78812644819,
+        "street_consequence": 0.5286820767
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14835946502063,
+          41.053302498969906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14A",
+        "streetname": "INDIANA AVE",
+        "zipcode": 46807,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2671.31947291694,
+        "street_consequence": 0.5286820767
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14967867259517,
+          41.05692879154038
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13368631671341,
+          41.0607084674874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1371457804776,
+          41.06067324915345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1371071528506,
+          41.0598966107276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13541139737508,
+          41.060201399496854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13889880848144,
+          41.06002707904308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13850452044785,
+          41.06035006027489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13690109868729,
+          41.05810557210121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13623586962689,
+          41.058678040941274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13643887562934,
+          41.0590651029716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13609502433246,
+          41.059323799100675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13560112626496,
+          41.05590412022205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13342490243265,
+          41.05631595170195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13572282593285,
+          41.0565126271736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14181936491788,
+          41.056490920908686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14067429675251,
+          41.05649561792638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13820125146916,
+          41.053368407651206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14112163843893,
+          41.05387205179057
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14168984323871,
+          41.05357428161301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "UNKNOWN",
+        "zipcode": null,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 6507.91499518209,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14052986080549,
+          41.05357926900845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14A",
+        "streetname": "S WAYNE AVE",
+        "zipcode": 46807,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2679.04867241969,
+        "street_consequence": 0.5286820767
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14730157922011,
+          41.05696440944613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14A",
+        "streetname": "W PACKARD AVE",
+        "zipcode": 46807,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2699.66867221043,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14723427253338,
+          41.05509043203077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "S CALHOUN ST",
+        "zipcode": 46803,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 29.3836227551017,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13783104613105,
+          41.06066889114225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "E LEITH ST",
+        "zipcode": 46806,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1351.92297822327,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13538891218371,
+          41.05973365443046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14C",
+        "streetname": "INDIANA AVE",
+        "zipcode": 46807,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2691.90183596664,
+        "street_consequence": 0.5286820767
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.14940430993748,
+          41.049562932640214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14C",
+        "streetname": "W OAKDALE DR",
+        "zipcode": 46807,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2697.50563284065,
+        "street_consequence": 0.5286820767
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1422560763688,
+          41.051856641144845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14C",
+        "streetname": "W OAKDALE DR",
+        "zipcode": 46807,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2697.50563284065,
+        "street_consequence": 0.5286820767
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1471540159646,
+          41.05208472181597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14B",
+        "streetname": "S CALHOUN ST",
+        "zipcode": 46806,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 2663.98894231362,
+        "street_consequence": 0.5339949171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13766322625969,
+          41.05697573102591
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH34A",
+        "streetname": "BUSCHE DR",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 809.371063670844,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.05148203631869,
+          41.10465827213351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "VI14D",
+        "streetname": "E RUDISILL BLVD",
+        "zipcode": 46806,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1344.9138074568,
+        "street_consequence": 0.5272842793
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.13492459236426,
+          41.05009558734064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH34A",
+        "streetname": "SIMCOE DR",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1072.84930373495,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.0566906254757,
+          41.104553462702945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH34A",
+        "streetname": "ARROWWOOD DR",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 249.633164410358,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.05208521768316,
+          41.10596507424336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH34A",
+        "streetname": "TONAWANDA DR",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 692.700954711083,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.0544390526565,
+          41.10529245056975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH34A",
+        "streetname": "FOREST VALLEY DR",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1852.5256532688,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.05443069952655,
+          41.101516584479064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH27C",
+        "streetname": "KANATA CT",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 646.784607123942,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.05471949896346,
+          41.1085790072335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH27C",
+        "streetname": "SIMCOE CT",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 546.601954916667,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.05711730707586,
+          41.106861181539095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH27C",
+        "streetname": "NAQUAGA DR",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 617.897780461902,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.05710837670983,
+          41.11024820979522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH27C",
+        "streetname": "WINDLASS CT",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 754.131614658241,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.0579540038305,
+          41.11072208081124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH27C",
+        "streetname": "CHICKASAW DR",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 839.555086579739,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.05505811734726,
+          41.11048414850708
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH34A",
+        "streetname": "GEORGETOWN NORTH BLVD",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 1130.95807840338,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.05845758157132,
+          41.10344430474712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH27C",
+        "streetname": "WHETSTONE LN",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 536.469716276173,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.05649501609197,
+          41.110970506091675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "minor_grid_name": "WH27C",
+        "streetname": "ANTEBELLUM DR",
+        "zipcode": 46815,
+        "municipality": "FORT WAYNE",
+        "intersecting_length": 273.202539543426,
+        "street_consequence": 0.5231556581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.0517172896049,
+          41.10652043272713
+        ]
+      }
+    }
+  ]
+};
+// L.geoJSON(centroids).addTo(map);
+var addedcentroids = L.geoJSON(centroids, {
+	onEachFeature: function(feature, layer) {
+		if(feature.geometry.type==='Point') {
+			layer.bindPopup('Street Name: ' + feature.properties.streetname + '<br> SC: ' + feature.properties.street_consequence);
+		}
+		
+	}}
+	).addTo(map);
+
+// var featuregroup = L.featureGroup([centroids, roads, street_consequence]).addTo(map);
+// map.fitBounds(featuregroup.getBounds());
+
+map.fitBounds(addedcentroids.getBounds());
+
+
+
+</script>
+
+
+
+</body>
+</html>
